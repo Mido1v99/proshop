@@ -1,1 +1,1 @@
-# proshop
+# simple-shop

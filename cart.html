@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>سلة التسوق</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <h1>🛒 سلة التسوق</h1>
+    <nav>
+      <a href="index.html">↩ العودة للمتجر</a>
+    </nav>
+  </header>
+
+  <main class="container" id="cart-items"></main>
+  <h2 class="total" id="total">الإجمالي: 0 جنيه</h2>
+
+  <footer>
+    <p>جميع الحقوق محفوظة &copy; 2025 متجر الباشا</p>
+  </footer>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const container = document.getElementById('cart-items');
+    const totalEl = document.getElementById('total');
+
+    function renderCart() {
+      container.innerHTML = "";
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        const div = document.createElement('section');
+        div.className = "product-card";
+        div.innerHTML = `
+          <h2>${item.name}</h2>
+          <p>السعر: ${item.price} جنيه</p>
+          <button onclick="removeFromCart(${index})">❌ إزالة</button>
+        `;
+        container.appendChild(div);
+        total += item.price;
+      });
+
+      totalEl.innerText = `الإجمالي: ${total} جنيه`;
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCart();
+    }
+
+    renderCart();
+  </script>
+</body>
+</html>
