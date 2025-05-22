@@ -1,56 +1,72 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl"> <!-- تحديد أن اللغة عربية والاتجاه من اليمين لليسار -->
 <head>
-  <meta charset="UTF-8">
-  <title>سلة التسوق</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8"> <!-- ترميز الحروف لدعم اللغة العربية -->
+  <title>سلة التسوق</title> <!-- عنوان الصفحة في المتصفح -->
+  <link rel="stylesheet" href="style.css"> <!-- ربط ملف CSS لتنسيق الصفحة -->
 </head>
 <body>
+
+  <!-- الهيدر يحتوي عنوان الصفحة ورابط العودة للمتجر -->
   <header class="navbar">
     <h1>🛒 سلة التسوق</h1>
     <nav>
-      <a href="index.html">↩ العودة للمتجر</a>
+      <a href="index.html">↩ العودة للمتجر</a> <!-- رابط يرجع المستخدم لصفحة المتجر الرئيسية -->
     </nav>
   </header>
 
+  <!-- المحتوى الرئيسي: هنا ستُعرض المنتجات الموجودة في السلة -->
   <main class="container" id="cart-items"></main>
+
+  <!-- عنصر لعرض السعر الإجمالي للمنتجات في السلة -->
   <h2 class="total" id="total">الإجمالي: 0 جنيه</h2>
 
+  <!-- التذييل يحتوي على حقوق النشر -->
   <footer>
     <p>جميع الحقوق محفوظة &copy; 2025 متجر الباشا</p>
   </footer>
 
+  <!-- سكربت جافاسكربت لإدارة محتوى سلة التسوق -->
   <script>
+    // استرجاع بيانات السلة من التخزين المحلي أو تهيئة مصفوفة فارغة إن لم توجد
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // الحصول على عناصر الصفحة التي سنعرض فيها المنتجات والإجمالي
     const container = document.getElementById('cart-items');
     const totalEl = document.getElementById('total');
 
+    // دالة لعرض محتويات السلة على الصفحة
     function renderCart() {
-      container.innerHTML = "";
-      let total = 0;
+      container.innerHTML = ""; // تفريغ العنصر قبل إعادة التعبئة
+      let total = 0; // متغير لحساب الإجمالي
 
+      // تمر على كل عنصر في السلة وتعرضه
       cart.forEach((item, index) => {
         const div = document.createElement('section');
-        div.className = "product-card";
+        div.className = "product-card"; // نمط CSS للبطاقة
         div.innerHTML = `
           <h2>${item.name}</h2>
           <p>السعر: ${item.price} جنيه</p>
-          <button onclick="removeFromCart(${index})">❌ إزالة</button>
+          <button onclick="removeFromCart(${index})">❌ إزالة</button> <!-- زر لإزالة العنصر -->
         `;
         container.appendChild(div);
-        total += item.price;
+        total += item.price; // جمع الأسعار لحساب الإجمالي
       });
 
+      // عرض الإجمالي في العنصر المخصص
       totalEl.innerText = `الإجمالي: ${total} جنيه`;
     }
 
+    // دالة لإزالة عنصر من السلة بناءً على الفهرس
     function removeFromCart(index) {
-      cart.splice(index, 1);
-      localStorage.setItem('cart', JSON.stringify(cart));
-      renderCart();
+      cart.splice(index, 1); // حذف العنصر من المصفوفة
+      localStorage.setItem('cart', JSON.stringify(cart)); // تحديث التخزين المحلي
+      renderCart(); // إعادة عرض السلة بعد التحديث
     }
 
+    // تنفيذ عرض السلة عند تحميل الصفحة
     renderCart();
   </script>
+
 </body>
 </html>
