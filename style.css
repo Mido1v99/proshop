@@ -31,19 +31,10 @@ body {
   letter-spacing: 2px;
 }
 
-.navbar nav a {
-  color: #ff6f61;
-  font-weight: 600;
-  text-decoration: none;
-  padding: 10px 15px;
-  border: 2px solid #ff6f61;
-  border-radius: 6px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
+
 
 .navbar nav a:hover {
-  background-color: #ff6f61;
-  color: #fff;
+  background-color: #1ebe5d;
 }
 
 /* Main container */
@@ -58,7 +49,7 @@ body {
 
 /* Product Card */
 .product-card {
-  background: #fff;
+  background: #f0eded;
   border-radius: 12px;
   box-shadow: 0 8px 15px rgba(0,0,0,0.1);
   padding: 25px;
@@ -101,7 +92,7 @@ body {
 /* Buttons */
 button, a.whatsapp {
   background-color: #ff6f61;
-  color: rgb(227, 224, 232);
+  color: rgb(224, 221, 230);
   border: none;
   padding: 12px 20px;
   border-radius: 8px;
@@ -164,5 +155,11 @@ footer {
   transform: scale(1.2);
   color: #ff6f61;
 }
+
+
+
+
+
+
 
 
