@@ -130,7 +130,23 @@ button, a.whatsapp {
   transition: background-color 0.3s ease;
   cursor: pointer;
 }
+/* تنسيق زر إدارة المنتجات */
+a.admin-link {
+background-color: #ff6f61; /* لون خلفية الزر */
+  color: rgb(224, 221, 230); /* لون النص */
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
 
+a.admin-link:hover {
+  background-color: #0056b3;
+}
 /* تأثير تمرير الماوس على زر الواتساب */
 a.whatsapp:hover {
   background-color: #1ebe5d;
@@ -198,4 +214,136 @@ footer {
 .top-bar .icon:hover {
   transform: scale(1.2); /* تكبير الأيقونة */
   color: #ff6f61; /* تغيير لونها */
+}
+
+
+
+
+/* ======================== */
+/* Product Management Section */
+/* ======================== */
+
+.admin-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.admin-container h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+}
+.form-group {
+  margin-bottom: 15px;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group textarea,
+.form-group input[type="file"] {
+  width: calc(100% - 22px); /* لتأخذ كامل العرض مع بعض الهامش */
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+.admin-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 10px;
+  display: block; /* لكي يأخذ سطرًا كاملاً */
+  width: 100%;
+}
+.admin-button:hover {
+  background-color: #0056b3;
+}
+.product-management-list {
+  margin-top: 30px;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+}
+.product-management-list .product-item {
+  display: flex;
+  flex-wrap: wrap; /* للسماح بالعناصر بالنزول لسطر جديد في الشاشات الصغيرة */
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+.product-management-list .product-item:last-child {
+  border-bottom: none;
+}
+.product-management-list .product-info {
+  flex-grow: 1;
+  margin-bottom: 10px; /* مسافة بين المعلومات والأزرار في الشاشات الصغيرة */
+}
+.product-management-list .product-info h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #555;
+}
+.product-management-list .product-info p {
+  margin: 5px 0 0;
+  color: #777;
+  font-size: 0.9rem;
+}
+.product-management-list .product-actions {
+  display: flex;
+  gap: 10px; /* مسافة بين الأزرار */
+}
+.product-management-list .product-actions button {
+  background-color: #dc3545;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.product-management-list .product-actions button.edit {
+  background-color: #ffc107;
+  color: #333;
+}
+.product-management-list .product-actions button:hover {
+  opacity: 0.9;
+}
+.alert-message {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  text-align: center;
+}
+/* Responsive adjustments for management page */
+@media (max-width: 768px) {
+  .admin-container {
+    margin: 20px;
+    padding: 15px;
+  }
+  .product-management-list .product-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .product-management-list .product-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
 }
